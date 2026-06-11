@@ -9,11 +9,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import r2_score, mean_absolute_error
 
-print("Loading Dataset...")
-
-# ==========================
 # LOAD DATASET
-# ==========================
 
 df = pd.read_csv("Hyderbad_House_price.csv")
 
@@ -23,9 +19,7 @@ print(df.head())
 print("\nDataset Shape")
 print(df.shape)
 
-# ==========================
 # DATA CLEANING
-# ==========================
 
 df.drop_duplicates(inplace=True)
 df.dropna(inplace=True)
@@ -43,9 +37,7 @@ print(df.isnull().sum())
 print("\nColumns:")
 print(df.columns)
 
-# ==========================
 # SAVE TO SQL DATABASE
-# ==========================
 
 conn = sqlite3.connect("hyderabad.db")
 
@@ -58,11 +50,7 @@ df.to_sql(
 
 print("\nData Stored in SQL Database")
 
-# ==========================
 # NUMPY ANALYSIS
-# ==========================
-
-print("\n===== NUMPY ANALYSIS =====")
 
 print(
     "Average Price:",
@@ -88,9 +76,7 @@ print(
     "Lakhs"
 )
 
-# ==========================
 # TOP LOCALITIES
-# ==========================
 
 locality_prices = (
     df.groupby("location")["price(L)"]
@@ -103,9 +89,7 @@ print("\nTop 10 Expensive Localities")
 
 print(locality_prices)
 
-# ==========================
-# EXPORT TO EXCEL
-# ==========================
+### EXPORT TO EXCEL
 
 # Complete cleaned dataset
 df.to_excel(
@@ -128,9 +112,7 @@ summary.to_excel(
     "House_Report_Summary.xlsx"
 )
 
-# ==========================
 # VISUALIZATION
-# ==========================
 
 plt.figure(figsize=(12, 6))
 
@@ -151,9 +133,7 @@ plt.show()
 
 print("\nChart Saved")
 
-# ==========================
 # MACHINE LEARNING
-# ==========================
 
 print("\nTraining Model...")
 
@@ -252,9 +232,7 @@ joblib.dump(
 
 print("\nModel Saved")
 
-# ==========================
 # SAMPLE PREDICTION
-# ==========================
 
 print("\n===== HOUSE PRICE PREDICTION =====")
 
